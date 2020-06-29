@@ -1,0 +1,1 @@
+<a href="{{route('dashboard.'.$models.'.create')}}" class="btn btn-info pull-right">Add {{$model}}</a>
