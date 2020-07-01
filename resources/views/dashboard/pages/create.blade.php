@@ -1,7 +1,5 @@
 @extends('dashboard.layout.app')
-@php 
-    
-@endphp
+
 @section('title',$pageTitle)
 @section('content')
 <div class="row">

@@ -20,7 +20,7 @@
             <label class="bmd-label-floating">Description : </label>
             <textarea class='form-control @error($input) is-invalid @enderror' rows='5' name="{{$input}}">
                 {{isset($row) ? $row->{$input} : old($input)}}
-            </textarea>                
+            </textarea>
             @error($input)
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
 </div>
 <br>
 <div class='row'>
-@php $input = 'meta_keywords'; @endphp                    
+@php $input = 'meta_keywords'; @endphp
     <div class="col-md-12">
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating">Meta KeyWords : </label>
@@ -54,7 +54,7 @@
             <label class="bmd-label-floating">Meta Description : </label>
             <textarea class='form-control @error($input) is-invalid @enderror' rows='5' name="{{$input}}">
                 {{isset($row) ? $row->{$input} : old($input)}}
-            </textarea>                
+            </textarea>
             @error($input)
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -64,14 +64,14 @@
     </div>
 </div>
 <br>
-<div class="row">   
+<div class="row">
     @php $input = 'status'; @endphp
     <div class='col-md-4'>
         <label class='bmd-label-floating'>Status : </label>
     </div>
     <div class="col-md-4">
         <div class="form-check form-check-radio">
-            <label class="form-check-label" for='active'>    
+            <label class="form-check-label" for='active'>
                 <input class="form-check-input @error($input) is-invalid @enderror" id="active" type="radio" name="{{$input}}"  value="1" {{(isset($row) && $row->status === 1) ? 'checked' : ''}}>Active
                 <span class="circle">
                     <span class="check"></span>
@@ -88,6 +88,6 @@
                 </span>
             </label>
         </div>
-    </div>  
+    </div>
 </div>
 <br/>

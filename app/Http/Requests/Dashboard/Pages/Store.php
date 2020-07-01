@@ -28,7 +28,8 @@ class Store extends FormRequest
             'name' => ['required','string','min:3','max:255'],
             'describe' => ['required','string','min:3','max:255'],
             'meta_describe' => ['max:255'],
-            'meta_keywords' => ['max:255']
+            'meta_keywords' => ['max:255'],
+            'status' => ['integer','in:0,1']
         ];
     }
 }
