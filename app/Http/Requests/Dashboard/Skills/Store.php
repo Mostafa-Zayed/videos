@@ -26,6 +26,7 @@ class Store extends FormRequest
         return [
             //
             'name'           => ['required', 'string', 'max:255','min:2'],
+            'status'   => ['integer','in:0,1']
         ];
     }
 }

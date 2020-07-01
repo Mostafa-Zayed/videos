@@ -26,6 +26,7 @@ class Update extends FormRequest
         return [
             //
             'name'           => ['required', 'string', 'max:255','min:2'],
+            'status'  => ['required','integer','in:0,1']
         ];
     }
 }
