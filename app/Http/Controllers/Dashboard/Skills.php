@@ -23,5 +23,5 @@ class Skills extends DashboardController
         $row = $this->model::findOrFail($id);
         $row->update($request->except(['_token','_method']));
         return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.index');
-    }
+    }// end update
 }

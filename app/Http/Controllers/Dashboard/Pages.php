@@ -12,20 +12,16 @@ class Pages extends DashboardController
     public function __construct(Page $model){
         parent::__construct($model);
     }
-    
+
     public function store(Store $request){
-    
-        $this->model::create($request->all());
+
+        $this->model::create($request->except('_token'));
         return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.index');
-        
-    
-        
-    }
+    }// end store
 
     public function update($id,Update $request){
         $row = $this->model::findOrFail($id);
-        
-        $row->update($request->all());
-        return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.edit',['id'=>$id]);
-    }
+        $row->update($request->except(['_token','_method']));
+        return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.index');
+    }// end update
 }

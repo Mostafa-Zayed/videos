@@ -12,3 +12,31 @@
         </div>
     </div>
 </div>
+<br/>
+<div class="row">
+    @php $input = 'status'; @endphp
+    <div class='col-md-4'>
+        <label class='bmd-label-floating'>Status : </label>
+    </div>
+    <div class="col-md-4">
+        <div class="form-check form-check-radio">
+            <label class="form-check-label" for='active'>
+                <input class="form-check-input @error($input) is-invalid @enderror" id="active" type="radio" name="{{$input}}"  value="1" {{(isset($row) && $row->status === 1) ? 'checked' : ''}}>Active
+                <span class="circle">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class='col-md-4'>
+        <div class="form-check form-check-radio">
+            <label class="form-check-label" for='inactive'>
+                <input class="form-check-input @error($input) is-invalid @enderror" type="radio" name="{{$input}}" id="inactive" value="0" {{(isset($row) && $row->status === 0) ? 'checked' : ''}}>Not Active
+                <span class="circle">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    </div>
+</div>
+

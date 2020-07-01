@@ -16,6 +16,7 @@ class CreateTagesTable extends Migration
         Schema::create('tages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

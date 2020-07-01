@@ -1,7 +1,7 @@
 @extends('dashboard.layout.app')
 @php
     $pageDesc  = 'Here You Can Create / Edit / Delete '.ucfirst($models);
-    $fields = ['id','name','control'];
+    $fields = ['id','name','status','control'];
         $increment = 0;
 @endphp
 @section('title',$pageTitle)
@@ -20,7 +20,7 @@
       @endcomponent
       @include('dashboard.'.$models.'.table-body',['rows'=>$rows])
 
-                    </table>   
+                    </table>
                   </div>
                 </div>
         </div>
