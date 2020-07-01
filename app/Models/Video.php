@@ -41,4 +41,8 @@ class Video extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+
+    public function getPublished(){
+        return $this->published == 1 ? 'Pudblished' : 'Not Published' ;
+    }
 }

@@ -13,7 +13,7 @@
     </div>
 </div>
 <div class='row'>
-    @php $input = 'category_id'; @endphp 
+    @php $input = 'category_id'; @endphp
     <div class="col-md-12">
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating" for="{{$input}}">Category Name : </label>
@@ -28,7 +28,7 @@
 </div>
 
 <div class='row'>
-    @php $input = 'youtube_link'; @endphp 
+    @php $input = 'youtube_link'; @endphp
     <div class="col-md-12">
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating">Youtube Link : </label>
@@ -43,7 +43,7 @@
 </div>
 
 <div class='row'>
-    @php $input = 'published'; @endphp 
+    @php $input = 'published'; @endphp
     <div class='col-md-12'>
         <div class="form-group">
             <label>State :</label>
@@ -62,7 +62,7 @@
             <label class="bmd-label-floating">Description : </label>
             <textarea class='form-control @error($input) is-invalid @enderror' rows='5' name="{{$input}}">
                 {{isset($row) ? $row->{$input} : old($input)}}
-            </textarea>                
+            </textarea>
             @error($input)
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -71,12 +71,15 @@
         </div>
     </div>
 </div>
+<br/>
 <div class='row'>
-    @php $input = 'meta_keywords'; @endphp 
+    @php $input = 'meta_keywords'; @endphp
     <div class="col-md-12">
         <div class="form-group bmd-form-group">
-            <label class="bmd-label-floating">Meta KeyWords : </label>
-            <input type="text" class="form-control @error($input) is-invalid @enderror" name="{{$input}}" value="{{isset($row) ? $row->{$input} : old($input)}}"  autocomplete="{{$input}}" autofocus>
+            <label class="bmd-label-floating">Meta Keywords : </label>
+            <textarea class='form-control @error($input) is-invalid @enderror' rows='3' name="{{$input}}">
+                {{isset($row) ? $row->{$input} : old($input)}}
+            </textarea>
             @error($input)
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -85,6 +88,7 @@
         </div>
     </div>
 </div>
+<br/>
 <div class='row'>
 @php $input = 'meta_describe'; @endphp
     <div class="col-md-12">
@@ -92,7 +96,7 @@
             <label class="bmd-label-floating">Meta Description : </label>
             <textarea class='form-control @error($input) is-invalid @enderror' rows='3' name="{{$input}}">
                 {{isset($row) ? $row->{$input} : old($input)}}
-            </textarea>                
+            </textarea>
             @error($input)
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
@@ -102,7 +106,7 @@
     </div>
 </div>
 <div class='row'>
-    @php $input = 'skills[]'; @endphp 
+    @php $input = 'skills[]'; @endphp
     <div class='col-md-12'>
         <div class="form-group">
             <label>Skills :</label>
@@ -115,7 +119,7 @@
     </div>
 </div>
 <div class='row'>
-    @php $input = 'tages[]'; @endphp 
+    @php $input = 'tages[]'; @endphp
     <div class='col-md-12'>
         <div class="form-group">
             <label>Tages :</label>
@@ -128,7 +132,7 @@
     </div>
 </div>
 <div class='row'>
-    @php $input = 'image'; @endphp 
+    @php $input = 'image'; @endphp
     <div class='col-md-12'>
         <div class="form-group bmd-form-group">
             <label>Video Image : </label>
@@ -141,3 +145,16 @@
         </div>
     </div>
 </div>
+<br/>
+@if(isset($row->image) && !empty($row->image))
+    <div class='row'>
+        <div class='col-md-12'>
+            <div>
+                <label>Video Image: </label>
+            </div>
+            <div id='person_image'>
+                <img src="{{URL::to('/').'/uploades/images/videos/'.$row->image}}" width="300" height="200">
+            </div>
+        </div>
+    </div>
+@endif

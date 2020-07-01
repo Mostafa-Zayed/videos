@@ -13,30 +13,18 @@ use App\Http\Requests\Dashboard\Videos\Update;
 
 class Videos extends DashboardController
 {
-    //
+
     public function __construct(Video $model){
         parent::__construct($model);
     }
 
     use CommentTrait;
-/*
-    public function index(){
 
-        $rows = $this->model;
-        $rows = $this->fillter($rows);
-        $rows = $rows->paginate(10);
-        $model = $this->getModelName();
-        $smodel = $this->getClassNameFromModel();
-        $pageTitle = 'Control '.str_plural($this->getModelName());
-
-        return view('dashboard.'.$this->getClassNameFromModel().'.index',compact('rows','model','smodel','pageTitle'));
-    }//end index
-*/
     protected function with(){
         return ['category','user'];
-    }
-    protected function append(){
+    }// end with
 
+    protected function append(){
         $data = [
             'categories' => Category::get(),
             'skills'   => Skill::get(),
@@ -62,71 +50,52 @@ class Videos extends DashboardController
         }
 
         return $data;
-    }
+    }// end append
+
     public function store(Store $request){
-        //dd($request->all());
-        $data = $request->all() + ['user_id' => auth()->user()->id];
+
+        $data = $request->except('_token') + ['user_id' => auth()->user()->id];
         if($request->has('image')){
             $image = $request->file('image');
             $new_name = rand().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('uploades/images/videos'),$new_name);
             $data['image']= $new_name;
         }
+        // check if User Selected Skill To This Video
         $row  = $this->model::create($data);
         if(isset($data['skills']) && !empty($data['skills'])){
             $row->skills()->sync($data['skills']);
         }
-
+        // check if User Selected Tages To This Video
         if(isset($data['tages']) && !empty($data['tages'])){
             $row->tages()->sync($data['tages']);
         }
         return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.index');
 
-    }
-
+    }// end store
 
     public function update($id,Update $request){
 
         $row = $this->model::findOrFail($id);
-        $data = $request->all();
+        $data = $request->except(['_token','_method']);
 
          if($request->hasFile('image')){
             $image = $request->file('image');
             $new_name = rand().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('uploades/videos'),$new_name);
+            $image->move(public_path('uploades/images/videos'),$new_name);
             $data['image']= $new_name;
         }
 
         $row->update($data);
+         // check is User Selected Skills To This Video
         if(isset($data['skills']) && !empty($data['skills'])){
             $row->skills()->sync($data['skills']);
         }
+        // check if User Selected Tages To This Video
         if(isset($data['tages']) && !empty($data['tages'])){
             $row->tages()->sync($data['tages']);
         }
-        return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.edit',['id'=>$id]);
-    }
+        return redirect()->route('dashboard.'.$this->lowerModelNamePlural.'.index');
+    }// end update
 
-
-    //create
-    /*public function create(){
-        $model = $this->getModelName();
-        $smodel = $this->getClassNameFromModel();
-        $pageTitle = 'Create '.$model;
-        $pageDesc  = 'Here You Can '.$pageTitle;
-        $categories = Category::get();
-        return view('dashboard.'.$this->getClassNameFromModel().'.create',compact('model','pageTitle','pageDesc','smodel','categories'));
-    }//end create
-
-    //edit
-    public function edit($id){
-        $model = $this->getModelName();
-        $smodel = $this->getClassNameFromModel();
-        $pageTitle = 'Edit '.$model;
-        $pageDesc  = 'Here You Can '.$pageTitle;
-        $row = $this->model::findOrFail($id);
-        $categories = Category::get();
-        return view('dashboard.'.$this->getClassNameFromModel().'.edit',compact('row','model','smodel','pageTitle','pageDesc','categories'));
-    }//end edit
-    */
 }

@@ -58,7 +58,7 @@ class DashboardController extends Controller{
         if(!empty($with)){
             $rows = $rows::with($with);
         }
-        $rows = $rows->latest()->paginate(10);
+        $rows = $rows->latest()->paginate(5);
 
         $model = $this->modelName;
         $models = $this->lowerModelNamePlural;

@@ -7,16 +7,15 @@
 
                           <tr>
                             <td>
-                              @if(isset($comment->user->instructor->user_id))
-                                  
-                                  @if($comment->user->instructor->user_id === auth()->user()->id)
-                                    <buttons class='btn btn-warning'>Instructor</buttons>
-                                  @endif
-                              @else
+                                @if($comment->user->id == $comment->user_id)
+                                    <buttons class='btn btn-danger'>
+                                        {{ucfirst('Instructor')}}
+                                    </buttons>
+                                @else
                                 <buttons class='btn btn-primary'>
-                                  {{ucfirst($comment->user->full_name)}}
+                                  {{ucfirst($comment->user->name)}}
                                 </buttons>
-                              @endif
+                                @endif
                             </td>
                             <td>
                               <p>{{$comment->comment}}</p>
@@ -26,7 +25,6 @@
                               <button type="button" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Edit Task">
                                 <i class="material-icons">edit</i>
                               </button>
-                              {{--@include('dashboard.shared.buttons.edit',['model'=>'Comment','models'=>'comments','id'=>$row->id])--}}
                               <a href="{{route('dashboard.comment.delete',['id'=>$comment->id])}}" rel="tooltip" title="" class="btn btn-white btn-link btn-sm" data-original-title="Remove">
                                 <i class="material-icons">close</i>
                               </a>

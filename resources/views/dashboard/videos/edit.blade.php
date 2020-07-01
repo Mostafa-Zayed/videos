@@ -27,7 +27,7 @@
                         <iframe width="380" src="https://www.youtube.com/embed/{{$videoId}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <br>
                         <div>
-                            <img width="380" height="200" src="{{url('uploades/videos/'.$row->image)}}">
+                            <img width="380" height="200" src="{{url('uploades/images/videos/'.$row->image)}}">
                         </div>
                         @endif
                     </div>
@@ -35,7 +35,7 @@
             </div>
     <div class='col-md-12'>
         <div class='card'>
-            
+
                 @include('dashboard.shared.cards.header',['pageTitle'=>'Video Comments','pageDesc'=>'Here You Can Control Video Comments','button'=>null])
             <div class='card-body'>
                 @include('dashboard.comments.index',['comments'=>$comments])

@@ -20,11 +20,10 @@ class CreateVideosTable extends Migration
             $table->string('name');
             $table->text('describe');
             $table->string('image')->nullable();
-            
             $table->string('meta_keywords')->nullable();
             $table->string('meta_describe')->nullable();
             $table->string('youtube_link');
-            $table->boolean('published')->default(1);
+            $table->integer('published')->default(1);
             $table->timestamps();
         });
     }

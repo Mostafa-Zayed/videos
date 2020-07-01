@@ -31,7 +31,8 @@ class Store extends FormRequest
             'describe'    => ['required','string'],
             'meta_keywords' =>  ['max:255'],
             'meta_describe' =>  ['max:255'],
-            'image'     => ['required','image','mimes:jpeg,png,jpg,gif','max:5000']
+            'image'     => ['required','image','mimes:jpeg,png,jpg,gif','max:5000'],
+            'published' => ['integer','in:0,1']
         ];
     }
 }

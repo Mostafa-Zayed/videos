@@ -27,13 +27,12 @@ class Update extends FormRequest
             //
             'name' => ['required','string','max:255','min:5'],
             'category_id' => ['required','integer'],
-
             'youtube_link' => ['required','url','max:255'],
             'describe'    => ['required','string'],
-
             'meta_keywords' =>  ['max:255'],
             'meta_describe' =>  ['max:255'],
-            'image'     => ['nullable','image','mimes:jpeg,png,jpg,gif','max:5000']
+            'image'     => ['nullable','image','mimes:jpeg,png,jpg,gif','max:5000'],
+            'published'  => ['integer','in:0,1']
         ];
     }
 }

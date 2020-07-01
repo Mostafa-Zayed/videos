@@ -8,7 +8,7 @@ trait CommentTrait {
 
     public function commentStore(Store $request){
 
-        $data = $request->all() + ['user_id' => auth()->user()->id];
+        $data = $request->except('_token') + ['user_id' => auth()->user()->id];
         Comment::create($data);
         return redirect()->route('dashboard.videos.edit',['id'=>$data['video_id']]);
     }
@@ -29,5 +29,5 @@ trait CommentTrait {
         return redirect()->route('dashboard.videos.edit',['id'=>$row->video_id]);
 
     }
-	
+
 }
