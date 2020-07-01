@@ -87,3 +87,29 @@
     </div>
 </div>
 <br/>
+<div class="row">
+    @php $input = 'show'; @endphp
+    <div class='col-md-4'>
+        <label class='bmd-label-floating'>Show : </label>
+    </div>
+    <div class="col-md-4">
+        <div class="form-check form-check-radio">
+            <label class="form-check-label" for='show'>
+                <input class="form-check-input @error($input) is-invalid @enderror" id="show" type="radio" name="{{$input}}"  value="1" {{(isset($row) && $row->show === 1) ? 'checked' : ''}}>Show
+                <span class="circle">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    </div>
+    <div class='col-md-4'>
+        <div class="form-check form-check-radio">
+            <label class="form-check-label" for='hidden'>
+                <input class="form-check-input @error($input) is-invalid @enderror" type="radio" name="{{$input}}" id="hidden" value="0" {{(isset($row) && $row->show === 0) ? 'checked' : ''}}>Hiddden
+                <span class="circle">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+    </div>
+</div>

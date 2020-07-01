@@ -1,7 +1,7 @@
 @extends('dashboard.layout.app')
-@php 
+@php
     $pageDesc  = 'Here You Can Create / Edit / Delete '.$models;
-    $fields    = array('id','name','icon','status','control');
+    $fields    = array('id','name','status','show home','control');
     $increment = 0;
 @endphp
 @section('title',$pageTitle)

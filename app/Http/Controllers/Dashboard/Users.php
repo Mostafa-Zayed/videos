@@ -21,7 +21,7 @@ class Users extends DashboardController
             $rows = $rows->where('name',request()->get('name'));
         }
         return $rows;
-    }// end with
+    }// end fillter
 
 
     protected function select(){

@@ -29,7 +29,8 @@ class Store extends FormRequest
             'icon'           => ['max:255'],
             'meta_keywords'  => ['max:255'],
             'meta_describe'  => ['max:255'],
-            'status'   => ['integer']
+            'status'   => ['integer'],
+            'show'   => ['integer']
 
         ];
     }

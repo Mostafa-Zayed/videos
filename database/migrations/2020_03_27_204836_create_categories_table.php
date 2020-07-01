@@ -21,7 +21,6 @@ class CreateCategoriesTable extends Migration
             $table->string('meta_describe')->nullable();
             $table->integer('status')->default(0);
             $table->integer('show')->default(0);
-
             $table->softDeletes();
             $table->timestamps();
         });

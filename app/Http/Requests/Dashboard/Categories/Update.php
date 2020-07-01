@@ -30,6 +30,7 @@ class Update extends FormRequest
             'meta_keywords'  => ['max:255'],
             'meta_describe'  => ['max:255'],
             'status'   => ['required','integer'],
+            'show'   => ['integer']
         ];
     }
 }
