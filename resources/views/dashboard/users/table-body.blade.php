@@ -4,7 +4,7 @@
       <td style='text-align:center;'>{{++$increment}}</td>
       <td style='text-align:center;'>
         @if(isset($row->image) && !empty($row->image))
-          <img class='img-thumbnail' src="{{URL::to('/')}}/images/users/{{$row->image}}" width="50" height="60"/>
+          <img class='img-thumbnail' src="{{URL::to('/')}}/uploades/images/users/{{$row->image}}" width="50" height="60"/>
         @else
           {{'No Image'}}
         @endif

@@ -24,9 +24,10 @@ class Update extends FormRequest
     public function rules()
     {
         return [
-            //
+
             'name' => ['required', 'string', 'max:255','min:3'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$this->user],
+            'password'  => ['confirmed'],
             'image'    => ['image','mimes:jpeg,png,jpg,gif','max:5000'],
             'status'   => ['integer'],
             'group'    => ['required','in:user,admin']

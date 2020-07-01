@@ -110,7 +110,7 @@
             <label>My Image: </label>
         </div>
         <div id='person_image'>
-            <img src="{{URL::to('/').'/images/users/'.$row->image}}" width="300" height="200">
+            <img src="{{URL::to('/').'/uploades/images/users/'.$row->image}}" width="300" height="200">
         </div>
     </div>
 </div>
