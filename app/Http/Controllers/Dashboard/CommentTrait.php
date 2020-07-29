@@ -25,7 +25,9 @@ trait CommentTrait {
     public function commentUpdate($id,Store $request){
 
         $row = Comment::findOrFail($id);
-        $row->update($request->all());
+        //dd($request->except(['_token','_method']));
+        $row->update($request->except(['_token','_method']));
+
         return redirect()->route('dashboard.videos.edit',['id'=>$row->video_id]);
 
     }

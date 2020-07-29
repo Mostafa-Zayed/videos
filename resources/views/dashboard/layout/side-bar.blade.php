@@ -62,6 +62,12 @@
               <p>videos &nbsp;&nbsp;&nbsp;<button class="btn btn-primary btn-sm" style="border-radius: 3.2rem;">{{\App\Models\Video::count()}}</button></p>
             </a>
           </li>
+          <li class="nav-item {{isActive('messages')}}">
+                <a class="nav-link" href="{{route('dashboard.messages.index')}}">
+                    <i class="material-icons">email</i>
+                    <p>Messages &nbsp;&nbsp;&nbsp;<button class="btn btn-primary btn-sm" style="border-radius: 3.2rem;">{{\App\Models\Message::count()}}</button></p>
+                </a>
+            </li>
         </ul>
       </div>
     </div>

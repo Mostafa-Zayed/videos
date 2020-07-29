@@ -15,11 +15,14 @@
     Route::resource('pages','Pages')->except(['show']);
     Route::resource('videos','Videos');
     Route::resource('profiles','Profiles');
+    Route::resource('messages','Messages')->only(['index','destroy']);
     Route::get('login','Auth\LoginController@loginPage')->name('loginPage');
     Route::post('login','Auth\LoginController@login')->name('login');
 
     Route::post('comments','Videos@commentStore')->name('comments.store');
-    Route::get('comments/{id}','Videos@commentDelete')->name('comment.delete');
+    Route::put('comment/{id}','Videos@commentUpdate')->name('comment.update');
+    Route::delete('comment/{id}','Videos@commentDelete')->name('comment.destroy');
+
         });
     });
 

@@ -1,6 +1,6 @@
 <div class="row">
     @php $input = 'name'; @endphp
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating">Video Name : </label>
             <input type="text" class="form-control @error($input) is-invalid @enderror" name="{{$input}}" value="{{isset($row) ? $row->{$input} : old($input)}}" autocomplete="{{$input}}" autofocus>
@@ -11,10 +11,8 @@
             @enderror
         </div>
     </div>
-</div>
-<div class='row'>
     @php $input = 'category_id'; @endphp
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="form-group bmd-form-group">
             <label class="bmd-label-floating" for="{{$input}}">Category Name : </label>
             <select name="{{$input}}" class="form-control @error($input) is-invalid @enderror" >
@@ -26,7 +24,6 @@
         </div>
     </div>
 </div>
-
 <div class='row'>
     @php $input = 'youtube_link'; @endphp
     <div class="col-md-12">
@@ -42,18 +39,6 @@
     </div>
 </div>
 
-<div class='row'>
-    @php $input = 'published'; @endphp
-    <div class='col-md-12'>
-        <div class="form-group">
-            <label>State :</label>
-            <select name="{{$input}}" class="form-control @error($input) is-invalid @enderror">
-                <option value='1' {{ isset($row) && $row->{$input} == 1 ? 'selected' : ''}}>Published</option>
-                <option value='0' {{ isset($row) && $row->{$input} == 0 ? 'selected' : ''}}>Hidden</option>
-            </select>
-        </div>
-    </div>
-</div>
 
 <div class='row'>
 @php $input = 'describe'; @endphp
@@ -71,7 +56,6 @@
         </div>
     </div>
 </div>
-<br/>
 <div class='row'>
     @php $input = 'meta_keywords'; @endphp
     <div class="col-md-12">
@@ -88,7 +72,6 @@
         </div>
     </div>
 </div>
-<br/>
 <div class='row'>
 @php $input = 'meta_describe'; @endphp
     <div class="col-md-12">
@@ -107,7 +90,7 @@
 </div>
 <div class='row'>
     @php $input = 'skills[]'; @endphp
-    <div class='col-md-12'>
+    <div class='col-md-6'>
         <div class="form-group">
             <label>Skills :</label>
             <select name="{{$input}}" class="form-control @error($input) is-invalid @enderror" multiple style="height:100px">
@@ -117,15 +100,13 @@
             </select>
         </div>
     </div>
-</div>
-<div class='row'>
     @php $input = 'tages[]'; @endphp
-    <div class='col-md-12'>
+    <div class='col-md-6'>
         <div class="form-group">
             <label>Tages :</label>
             <select name="{{$input}}" class="form-control @error($input) is-invalid @enderror" multiple style="height:100px">
                 @foreach($tages as $tage)
-                <option value="{{$tage->id}}" {{ in_array($tage->id,$selectedTages) ? 'selected' : ''}}>{{ucfirst($tage->name)}}</option>
+                    <option value="{{$tage->id}}" {{ in_array($tage->id,$selectedTages) ? 'selected' : ''}}>{{ucfirst($tage->name)}}</option>
                 @endforeach
             </select>
         </div>
@@ -158,3 +139,4 @@
         </div>
     </div>
 @endif
+

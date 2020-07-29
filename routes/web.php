@@ -12,11 +12,12 @@
 */
 
 Route::get('/','HomeController@index')->name('home');
-Route::get('/courses/{id}','HomeController@course');
+//Route::get('/courses/{id}','HomeController@course');
 Route::get('category/{category}','HomeController@category')->name('category');
+Route::get('video/{video}','HomeController@video')->name('video');
 Route::get('skill/{skill}','HomeController@skill')->name('skill');
 Route::get('contact-us','HomeController@contact')->name('contact');
-
+Route::post('contact-us','HomeController@sendMessage')->name('message');
 Auth::routes();
 
 

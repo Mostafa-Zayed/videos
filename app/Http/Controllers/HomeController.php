@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\models\Skill;
 use App\Models\Video;
+use App\Models\Message;
 use Illuminate\Http\Request;
-use App\Models\ProgramType;
-use App\Models\Course;
-use App\Models\Programe;
-use App\Models\Instructor;
-use App\Models\Scholarships;
+use App\Http\Requests\Dashboard\Messages\Store;
 class HomeController extends Controller
 {
     /**
@@ -20,11 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        //view::share('courses',Course::where('show',1)->get());
-        //view::share('scholarships',Scholarships::where('show',1)->get());
-        //view::share('programtypes',ProgramType::all());
-        //view::share('instructors',Instructor::where('show',1)->get());
+        //$this->middleware('auth');
 
     }
 
@@ -33,32 +26,20 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
     public function index()
     {
-
         $videos = Video::orderBy('id','desc')->paginate(20);
         return view('home',compact('videos'));
     }
 
-    public function courses()
-    {
-        $courses = Course::all();
-        return view('front-end.courses.index',['courses'=>$courses]);
-    }
-    public function course($id)
-    {
-        $course = Course::findOrFail($id);
-        return view('front-end.courses.single-course',['course'=>$course]);
-    }
-
-    public function contact(){
-        dd('contact');
-    }
     public function category($category){
 
         $category = Category::select('id')->where('name','=',$category)->first();
-        $videos = $category->whereHas('videos')->paginate(8);
+        $videos = $category->videos;
         return view('frontend.category.index',compact('videos'));
+
     }
 
     public function skill($skill)
@@ -69,9 +50,19 @@ class HomeController extends Controller
         return view('frontend.category.index',compact('videos'));
     }
 
-    public function video($id)
+    public function contact(){
+        return view('frontend.contact');
+    }
+
+    public function video($video)
     {
-        $video = Video::findOrFail($id);
-        return view('videos.index',compact('video'));
+
+        $video = Video::findOrFail($video);
+        return view('frontend.videos.index',compact('video'));
+    }
+
+    public function sendMessage(Store $request){
+        Message::create($request->except('_token'));
+        return redirect()->route('home');
     }
 }

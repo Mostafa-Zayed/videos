@@ -1,4 +1,4 @@
-<form action="{{route('dashboard.comments.store')}}" method="post" enctype='multipart/form-data'>
+<form action="{{route('dashboard.comments.store')}}" method="post">
 {{csrf_field()}}
 <div class='row'>
 @php $input = 'comment'; @endphp
@@ -8,7 +8,7 @@
             <input type='hidden' name='video_id' value="{{$row->id}}">
             <textarea class='form-control @error($input) is-invalid @enderror' rows='3' name="{{$input}}">
                 {{isset($row) ? $row->{$input} : old($input)}}
-            </textarea>                
+            </textarea>
             @error($input)
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

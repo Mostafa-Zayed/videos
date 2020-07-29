@@ -15,13 +15,12 @@
             @endcomponent
           @endslot
       @endcomponent
-                
                 <div class="card-body">
                   @component('dashboard.shared.tables.table',['fields'=>$fields])
-      @endcomponent
-      @include('dashboard.'.$models.'.table-body',['rows'=>$rows])
+                  @endcomponent
+                  @include('dashboard.'.$models.'.table-body',['rows'=>$rows])
                     </table>
-                   
+
                   </div>
                 </div>
         </div>

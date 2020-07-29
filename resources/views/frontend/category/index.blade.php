@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title')
 
 @section('content')
 
@@ -6,11 +7,7 @@
         <h2>Latest Videos</h2>
     </div>
     <div class="row">
-        @foreach($videos as $video)
-        <div class="col-lg-4">
-            @include('includes.card')
-        </div>
-        @endforeach
+        @include('includes.card')
     </div>
     <div class="row">
         <div class="col-md-12">
